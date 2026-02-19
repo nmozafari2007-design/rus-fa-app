@@ -1,6 +1,8 @@
 "use client";
 
-import { speak, stopSpeak } from "..";
+import { speak, stopSpeak } from "../lib/speak"; // <-- اگر فایل تو app/lib/speak.ts است
+// import { speak, stopSpeak } from "@/lib/speak"; // <-- اگر فایل تو lib/speak.ts است
+// import { speak, stopSpeak } from "../../lib/speak"; // <-- اگر alias کار نکرد و فایل lib/speak.ts است
 
 export function Speak({
   text,
@@ -39,7 +41,7 @@ export function StopSpeak() {
         background: "transparent",
       }}
     >
-      ⏹
+      ⏹️
     </button>
   );
 }

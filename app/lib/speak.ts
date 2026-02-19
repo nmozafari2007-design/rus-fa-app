@@ -1,23 +1,17 @@
-// app/lib/speak.ts
-export type SpeakLang = "ru-RU" | "fa-IR";
-
-export function speak(text: string, lang: SpeakLang = "ru-RU") {
+export function speak(text: string, lang: string = "ru-RU") {
   if (typeof window === "undefined") return;
-  const synth = window.speechSynthesis;
-  if (!synth) return;
+  if (!("speechSynthesis" in window)) return;
 
-  // stop previous
-  synth.cancel();
+  window.speechSynthesis.cancel();
 
   const u = new SpeechSynthesisUtterance(text);
   u.lang = lang;
-  u.rate = 0.95;   // کمی آهسته‌تر
-  u.pitch = 1;
-
-  synth.speak(u);
+  window.speechSynthesis.speak(u);
 }
 
 export function stopSpeak() {
   if (typeof window === "undefined") return;
-  window.speechSynthesis?.cancel();
+  if (!("speechSynthesis" in window)) return;
+
+  window.speechSynthesis.cancel();
 }

@@ -1,41 +1,58 @@
 import Link from "next/link";
-
-export default function Home() {
+import InstallButton from "./components/InstallButton";
+export default function HomePage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-950 text-white">
-      <div className="mx-auto max-w-4xl px-6 py-12">
-        <header className="mb-10">
-          <h1 className="text-4xl font-bold tracking-tight">
-            اپ آموزش روسی (فارسی ↔ روسی)
-          </h1>
-          <p className="mt-3 text-slate-300">
-            لغات، گرامر و کویز — ساده، سریع و کاربردی
-          </p>
-        </header>
-
-        <section className="grid gap-6 md:grid-cols-3">
-          <Card
-            title="لغات (Dictionary)"
-            desc="جستجو فارسی↔روسی، سطح‌بندی A1 تا C1"
-            href="/words"
-          />
-          <Card
-            title="گرامر (Grammar)"
-            desc="قواعد اصلی + مثال فارسی و روسی"
-            href="/grammar"
-          />
-          <Card
-            title="کوییز (Quiz)"
-            desc="تمرین لغت و گرامر با امتیاز"
-            href="/quiz"
-          />
-        </section>
-
-        <footer className="mt-12 text-sm text-slate-400">
-        
-        </footer>
+    <div
+      style={{
+        paddingTop: 10,
+        paddingInline: 16,
+        maxWidth: 1000,
+        margin: "0 auto",
+      }}
+    >
+      {/* Title */}
+      <h1
+        style={{
+          textAlign: "center",
+          margin: "10px 0 22px",
+          fontSize: 34,
+          fontWeight: 900,
+          color: "#ffffff",
+        }}
+      >
+        آموزش زبان روسی برای فارسی زبان ها
+      </h1>
+      <div
+        style={{ display: "flex", justifyContent: "center", marginBottom: 14 }}
+      >
+        <InstallButton />
       </div>
-    </main>
+      {/* Cards container */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+          gap: 16,
+          alignItems: "stretch",
+        }}
+      >
+        <Card
+          title="لغات (Words)"
+          desc="لغات، کلمات و کدهای مهم + معنی و کاربردی"
+          href="words"
+        />
+        <Card
+          title="گرامر (Grammar)"
+          desc="ساختارها، قواعد، مثال و تمرین برای مبتدی تا C1"
+          href="/grammar"
+        />
+        <Card
+          title="کوییز (Quiz)"
+          desc="تمرینِ سریع و امتیازگیری + سوال بعدی خودکار"
+          href="/quiz"
+        />
+      </div>
+    </div>
   );
 }
 
@@ -51,15 +68,46 @@ function Card({
   return (
     <Link
       href={href}
-      className="group rounded-2xl border border-slate-800 bg-slate-900/40 p-5 shadow-sm transition hover:border-slate-600 hover:bg-slate-900/60"
+      style={{
+        textDecoration: "none",
+        outline: "none",
+      }}
     >
-      <div className="flex items-start justify-between gap-4">
-        <h2 className="text-lg font-semibold">{title}</h2>
-        <span className="text-slate-400 transition group-hover:translate-x-1">
-          →
-        </span>
+      <div
+        style={{
+          border: "1px solid rgba(255,255,255,0.18)",
+          borderRadius: 16,
+          padding: 18,
+          background: "rgba(255,255,255,0.04)",
+          minHeight: 140,
+          cursor: "pointer",
+          transition: "0.2s",
+        }}
+      >
+        <div
+          style={{
+            color: "#fff",
+            fontSize: 20,
+            fontWeight: 800,
+            textAlign: "center",
+            marginBottom: 10,
+            borderBottom: "1px solid rgba(255,255,255,0.18)",
+            paddingBottom: 10,
+          }}
+        >
+          {title}
+        </div>
+
+        <div
+          style={{
+            color: "rgba(255,255,255,0.85)",
+            lineHeight: 1.8,
+            textAlign: "center",
+          }}
+        >
+          {desc}
+        </div>
       </div>
-      <p className="mt-2 text-sm text-slate-300">{desc}</p>
     </Link>
   );
 }
