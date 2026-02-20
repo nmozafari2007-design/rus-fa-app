@@ -1,57 +1,52 @@
 import Link from "next/link";
 
+// اگر UserMenu داری (بعداً برای auth)، این ایمپورت را نگه دار.
+// اگر فعلاً نداری، همین خط را کامنت کن.
+// import UserMenu from "./UserMenu";
+
 export default function Header() {
   return (
-    <header
-      style={{
-        background: "#0b0f19",
-        borderBottom: "1px solid rgba(255,255,255,0.12)",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: 1100,
-          margin: "0 auto",
-          padding: "16px 16px 12px",
-        }}
-      >
-        {/* Title centered */}
-        <div
-          style={{
-            textAlign: "center",
-            color: "white",
-            fontSize: 22,
-            fontWeight: 900,
-            marginBottom: 12,
-          }}
-        >
-          اپ آموزشی زبان روسی (برای فارسی‌زبان‌ها)
-        </div>
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0b0f19]/90 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+        {/* Left: Brand */}
+        <Link href="/" className="flex items-center gap-3 text-white">
+          <div className="grid h-9 w-9 place-items-center rounded-xl bg-white/10 ring-1 ring-white/15">
+            <span className="text-sm font-black"></span>
+          </div>
+          <div className="leading-tight">
+            <div className="text-base font-extrabold">N-Russian Lab</div>
+            <div className="text-xs text-white/60"></div>
+          </div>
+        </Link>
 
-        {/* Main menu - horizontal */}
-        <nav
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: 12,
-            flexWrap: "wrap",
-          }}
-        >
-          <HeaderLink href="/words" label="📚 لغت" />
-          <HeaderLink href="/grammar" label="🧠 گرامر" />
-          <HeaderLink href="/quiz" label="✅ کویز" />
+        {/* Right: Nav + Auth */}
+        <nav className="flex items-center gap-2">
+          <HeaderLink href="/about" label=" About " />
+        
+          
+
+          <div className="ml-2 hidden items-center gap-2 sm:flex">
+            {/* اگر auth هنوز نداری، این دوتا دکمه کافی است */}
+            <Link
+              href="/login"
+              className="rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-sm font-bold text-white hover:bg-white/10"
+            >
+              Sign in
+            </Link>
+
+            <Link
+              href="/login"
+              className="rounded-xl bg-white px-3 py-2 text-sm font-extrabold text-[#0b0f19] hover:bg-white/90"
+            >
+              Sign up
+            </Link>
+
+            {/* اگر UserMenu داری، دکمه‌ها را حذف کن و این را فعال کن */}
+            {/*
+              <UserMenu />
+            */}
+          </div>
         </nav>
-
-        {/* Contact - separate, bottom-left */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-start",
-            marginTop: 10,
-          }}
-        >
-          <HeaderLink href="/about" label="🙋‍♂️About Me" />
-        </div>
       </div>
     </header>
   );
@@ -61,17 +56,7 @@ function HeaderLink({ href, label }: { href: string; label: string }) {
   return (
     <Link
       href={href}
-      style={{
-        padding: "10px 14px",
-        borderRadius: 12,
-        border: "1px solid rgba(255,255,255,0.14)",
-        background: "rgba(255,255,255,0.06)",
-        color: "white",
-        fontWeight: 800,
-        fontSize: 14,
-        textDecoration: "none",
-        outline: "none", // ✅ جلوگیری از outline زرد
-      }}
+      className="rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-sm font-extrabold text-white hover:bg-white/10"
     >
       {label}
     </Link>
