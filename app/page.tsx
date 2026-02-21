@@ -130,7 +130,7 @@ export default function HomePage() {
         {/* Cards */}
         <section
           style={{
-            display: "grid",
+            display: "grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
             gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
             gap: 22,
           }}
