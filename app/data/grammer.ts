@@ -1,7 +1,7 @@
 
 export type Level = "A1" | "A2" | "B1" | "B2" | "C1";
 
-export  type AlphabetItem= {
+export type AlphabetItem = {
   upper: string;
   lower: string;
   sound_fa: string; // تلفظ/آوا به فارسی (تقریبی)

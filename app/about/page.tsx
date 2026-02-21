@@ -79,7 +79,7 @@ Software Developer | AI Enthusiast          </p>
                   href="mailto:your@email.com"
                   className="mr-2 font-semibold underline hover:text-blue-600"
                 >
-                  nmozafari2007@email.com
+                  nmozafari2007@gmail.com
                 </a>
               </p>
 
